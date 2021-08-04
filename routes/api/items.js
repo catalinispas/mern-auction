@@ -53,6 +53,7 @@ router.post('/:id/bid', auth, async (req, res) => {
 
     console.log(item.bids);
 
+    // Check if bidding has ended
     if (item.endDate.getTime() < Date.now()) {
       return res.status(400).json({ msg: 'Bidding time is over!' });
     }
@@ -65,24 +66,14 @@ router.post('/:id/bid', auth, async (req, res) => {
       `userID is "${newBid.userId}", item.maxBid is "${item.maxBid}" and newBid.amount is"${newBid.amount}"`
     );
 
+    // Check if bidding is possible
     if (item.maxBid < newBid.amount) {
-      // item.maxBid.update(newBid.amount);
-      // item.maxBid.updateOne({ maxBid: `${newBid.amount}` });
-      // item.maxBidUser.update(newBid.userId);
-      // item.update({ maxBid: `${newBid.amount}` }); // ???????????
       item.maxBid = newBid.amount;
       item.maxBidUser = newBid.userId;
 
       item.bids = [newBid, ...item.bids];
 
       await item.save();
-
-      // item.findOneAndUpdate(
-      //   query,
-      //   { maxBid: newBid.amount },
-      //   options,
-      //   callback
-      // );
 
       return res.json(item);
     } else {
