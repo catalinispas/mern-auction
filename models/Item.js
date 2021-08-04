@@ -17,7 +17,7 @@ const ItemSchema = new Schema({
   },
   endDate: {
     type: Date,
-    default: new Date(Date.now() + 5 * 60000),
+    default: new Date(Date.now() + 10 * 60000),
     required: true,
   },
   author: {
@@ -27,7 +27,7 @@ const ItemSchema = new Schema({
   bids: [
     {
       amount: {
-        type: String,
+        type: Number,
         required: true,
       },
       date: {
@@ -40,6 +40,14 @@ const ItemSchema = new Schema({
       },
     },
   ],
+  maxBid: {
+    type: Number,
+    default: 0,
+  },
+  maxBidUser: {
+    type: String,
+    default: '',
+  },
 });
 
 module.exports = Item = mongoose.model('Item', ItemSchema);

@@ -1,3 +1,4 @@
+const { query } = require('express');
 const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
@@ -49,12 +50,44 @@ router.get('/:id', async (req, res) => {
 router.post('/:id/bid', auth, async (req, res) => {
   try {
     const item = await Item.findById(req.params.id);
+
+    console.log(item.bids);
+
+    if (item.endDate.getTime() < Date.now()) {
+      return res.status(400).json({ msg: 'Bidding time is over!' });
+    }
+
     const newBid = {
       userId: req.user.id,
-      amount: req.amount,
+      amount: req.body.amount,
     };
-    item.bids.push(newBid);
-    return res.json(item);
+    console.log(
+      `userID is "${newBid.userId}", item.maxBid is "${item.maxBid}" and newBid.amount is"${newBid.amount}"`
+    );
+
+    if (item.maxBid < newBid.amount) {
+      // item.maxBid.update(newBid.amount);
+      // item.maxBid.updateOne({ maxBid: `${newBid.amount}` });
+      // item.maxBidUser.update(newBid.userId);
+      // item.update({ maxBid: `${newBid.amount}` }); // ???????????
+      item.maxBid = newBid.amount;
+      item.maxBidUser = newBid.userId;
+
+      item.bids = [newBid, ...item.bids];
+
+      await item.save();
+
+      // item.findOneAndUpdate(
+      //   query,
+      //   { maxBid: newBid.amount },
+      //   options,
+      //   callback
+      // );
+
+      return res.json(item);
+    } else {
+      return res.status(400).json({ msg: 'Bidding amount is too low' });
+    }
   } catch (err) {
     console.log(err);
     return res.status(404).json({ msg: 'Item not found' });
