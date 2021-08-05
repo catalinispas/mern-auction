@@ -51,8 +51,6 @@ router.post('/:id/bid', auth, async (req, res) => {
   try {
     const item = await Item.findById(req.params.id);
 
-    console.log(item.bids);
-
     // Check if bidding has ended
     if (item.endDate.getTime() < Date.now()) {
       return res.status(400).json({ msg: 'Bidding time is over!' });
@@ -61,6 +59,7 @@ router.post('/:id/bid', auth, async (req, res) => {
     const newBid = {
       userId: req.user.id,
       amount: req.body.amount,
+      name: req.user.name,
     };
     console.log(
       `userID is "${newBid.userId}", item.maxBid is "${item.maxBid}" and newBid.amount is"${newBid.amount}"`

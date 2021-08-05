@@ -28,7 +28,7 @@ router.post('/', (req, res) => {
       if (!isMatching)
         return res.status(400).json({ msg: 'Credentials Invalid' });
       jwt.sign(
-        { id: user.id },
+        { id: user.id, name: user.name },
         config.get('jwtSecret'),
         // Set how much the user stays logged-in
         { expiresIn: 30000 },

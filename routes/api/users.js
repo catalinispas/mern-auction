@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
         newUser.save().then((user) => {
           // Generate token
           jwt.sign(
-            { id: user.id },
+            { id: user.id, name: user.name },
             config.get('jwtSecret'),
             // Set how much the user stays logged-in
             { expiresIn: 30000 },
@@ -59,6 +59,19 @@ router.post('/', (req, res) => {
       });
     });
   });
+});
+
+// @route   POST api/users
+// @desc    Register new user
+// @access  Public
+router.get('/:id', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    return res.json(user);
+  } catch (err) {
+    console.log(err);
+    return res.status(404).json({ msg: 'User not found' });
+  }
 });
 
 module.exports = router;

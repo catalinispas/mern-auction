@@ -12,17 +12,23 @@ import { Container } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
+// Components
+import ItemList from './components/ItemList';
+import NavBar from './components/NavBar';
+import Item from './components/Item';
+
 function App() {
   return (
     <div className='App'>
-      <Container>
-        <BrowserRouter>
+      <Router>
+        <Container className='container'>
+          <NavBar />
           <Switch>
-            <Route path='/' exact={true}></Route>
-            <Route path='/:questionId'></Route>
+            <Route path='/' exact={true} component={ItemList}></Route>
+            <Route path='/bids/:itemId' component={Item}></Route>
           </Switch>
-        </BrowserRouter>
-      </Container>
+        </Container>
+      </Router>
     </div>
   );
 }
