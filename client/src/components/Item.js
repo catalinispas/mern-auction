@@ -30,8 +30,28 @@ const Item = ({ match }) => {
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
+    if (!item) return <p>There are no auctions available at the moment</p>;
     const { bids } = item;
-    return bids.map((bid) => <li>{bid.author}</li>);
+    return (
+      <div>
+        <div className='title-wrapper'>
+          <h4>{item.title}</h4>
+          <p>{item.description}</p>
+        </div>
+        <ul className='itemList'>
+          <li className='itemList-item'>
+            <p className='itemList-header'>Bid author</p>
+            <p className='itemList-header'>Bid amount</p>
+          </li>
+          {bids.map((bid) => (
+            <li className='itemList-item' key={bid._id}>
+              <p>{bid.name}</p>
+              <p>{bid.amount}$</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
   }
 };
 

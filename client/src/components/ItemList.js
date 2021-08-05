@@ -36,7 +36,10 @@ const ItemList = () => {
         {items.map((item) => (
           <Link to={`/bids/${item._id}`}>
             <li className='itemList-item' key={item._id}>
-              <h4>{item.title}</h4>
+              <div className='itemList-item-wrapper'>
+                <h4>{item.title}</h4>
+                <p>{item.description}</p>
+              </div>
               <p>{item.maxBid > 0 ? `${item.maxBid} $` : 'No bids'}</p>
             </li>
           </Link>

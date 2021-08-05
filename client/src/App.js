@@ -16,7 +16,9 @@ import './App.css';
 import ItemList from './components/ItemList';
 import NavBar from './components/NavBar';
 import Item from './components/Item';
+import CreateAuction from './components/CreateAuction';
 
+// Main app
 function App() {
   return (
     <div className='App'>
@@ -26,6 +28,7 @@ function App() {
           <Switch>
             <Route path='/' exact={true} component={ItemList}></Route>
             <Route path='/bids/:itemId' component={Item}></Route>
+            <Route path='/newAuction' component={CreateAuction}></Route>
           </Switch>
         </Container>
       </Router>

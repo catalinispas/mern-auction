@@ -18,6 +18,7 @@
 .itemList-item {
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
   padding: 0.5rem;
   border-bottom: 1px solid rgba(47, 79, 79, 0.1);
 }
@@ -25,4 +26,29 @@
 .itemList-header {
   color: darkslategray;
   font-size: smaller;
+}
+
+.title-wrapper {
+  padding: 0.5rem;
+  background-color: rgb(222, 228, 233);
+}
+
+.auction-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-button {
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
 }
