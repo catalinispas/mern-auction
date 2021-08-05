@@ -5,6 +5,13 @@ function CreateAuction() {
   const [description, setDescription] = useState('');
   const [duration, setDuration] = useState(1);
 
+  function submitAuction() {
+    const newItem = {
+      title: { title },
+      description: { description },
+    };
+  }
+
   return (
     <form>
       <label>Title</label>
@@ -45,6 +52,7 @@ function CreateAuction() {
         onChange={() => setDuration(30)}
       />
       <label>30 minutes</label>
+      <button onClick={submitAuction()}>Submit Auction</button>
     </form>
   );
 }
