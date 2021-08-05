@@ -10,6 +10,9 @@ const NavBar = () => {
       <Link to='/newAuction' className='mainNav-link'>
         Create New Auction
       </Link>
+      <Link to='Login' className='mainNav-link'>
+        Login
+      </Link>
     </nav>
   );
 };

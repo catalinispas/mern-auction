@@ -17,6 +17,7 @@ import ItemList from './components/ItemList';
 import NavBar from './components/NavBar';
 import Item from './components/Item';
 import CreateAuction from './components/CreateAuction';
+import Login from './components/Login';
 
 // Main app
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Route path='/' exact={true} component={ItemList}></Route>
             <Route path='/bids/:itemId' component={Item}></Route>
             <Route path='/newAuction' component={CreateAuction}></Route>
+            <Route path='/login' component={Login}></Route>
           </Switch>
         </Container>
       </Router>
