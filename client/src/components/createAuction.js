@@ -7,6 +7,7 @@ const CreateAuction = () => {
   const [duration, setDuration] = useState(1);
 
   const { value, setValue } = useContext(AuthContext);
+
   const submitAuction = () => {
     const newItem = { title, description };
 
@@ -47,28 +48,11 @@ const CreateAuction = () => {
           onChange={(e) => setDescription(e.target.value)}
         />
         <br />
+        <label>Time in minutes</label>
         <input
-          name='duration'
-          type='radio'
-          value='1'
-          defaultChecked
-          onChange={() => setDuration(1)}
-        />
-        <label>1 minute</label>
-        <br />
-        <input
-          name='duration'
-          type='radio'
-          value='5'
-          onChange={() => setDuration(5)}
-        />
-        <label>5 minutes</label>
-        <br />
-        <input
-          name='duration'
-          type='radio'
-          value='30'
-          onChange={() => setDuration(30)}
+          type='text'
+          value={duration}
+          onChange={(e) => setDuration(e.target.value)}
         />
         <label>30 minutes</label>
         <button type='button' onClick={submitAuction}>

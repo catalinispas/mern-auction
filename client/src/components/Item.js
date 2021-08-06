@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import BidComponent from './BidComponent';
 
 const Item = ({ match }) => {
   const { itemId } = match.params;
@@ -45,9 +46,11 @@ const Item = ({ match }) => {
             <p className='itemList-header'>Bid author</p>
             <p className='itemList-header'>Bid amount</p>
           </li>
+          <BidComponent itemId={item._id} />
           {bids.map((bid) => (
             <li className='itemList-item' key={bid._id}>
               <p>{bid.name}</p>
+              <p className='itemList-item-date'>{bid.date}</p>
               <p>{bid.amount}$</p>
             </li>
           ))}

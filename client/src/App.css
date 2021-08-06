@@ -52,3 +52,8 @@
   display: flex;
   flex-direction: column;
 }
+
+.itemList-item-date {
+  color: darkslategray;
+  font-size: smaller;
+}
