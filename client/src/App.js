@@ -23,7 +23,6 @@ import { AuthContext } from './components/AuthContext';
 // Main app
 function App() {
   const [value, setValue] = useState(sessionStorage.getItem('token'));
-  // setValue(sessionStorage.getItem('token'));
   return (
     <div className='App'>
       <AuthContext.Provider value={{ value, setValue }}>

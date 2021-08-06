@@ -7,6 +7,7 @@ const Item = ({ match }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const [item, setItem] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/items/${itemId}`)
