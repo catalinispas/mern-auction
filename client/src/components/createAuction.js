@@ -1,19 +1,39 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from './AuthContext';
 
 function CreateAuction() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [duration, setDuration] = useState(1);
 
+  const { value, setValue } = useContext(AuthContext);
+
   function submitAuction() {
     const newItem = {
       title: { title },
       description: { description },
     };
+
+    fetch('http://localhost:5000/api/items', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-auth-token': value,
+      },
+      body: JSON.stringify(newItem),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.JSON);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
 
   return (
     <form>
+      <h4>{value}</h4>
       <label>Title</label>
       <input
         type='text'

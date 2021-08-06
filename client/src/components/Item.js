@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 const Item = ({ match }) => {
   const { itemId } = match.params;
@@ -37,6 +37,7 @@ const Item = ({ match }) => {
         <div className='title-wrapper'>
           <h4>{item.title}</h4>
           <p>{item.description}</p>
+          <p>{item.endDate}</p>
         </div>
         <ul className='itemList'>
           <li className='itemList-item'>

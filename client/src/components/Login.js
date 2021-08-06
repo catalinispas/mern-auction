@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from './AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [token, setToken] = useState(sessionStorage.getItem('token'));
+
+  const { value, setValue } = useContext(AuthContext);
+
+  setValue(token);
 
   const newAuth = {
     email: email,
@@ -26,6 +31,7 @@ const Login = () => {
         sessionStorage.setItem('token', data.token);
         setToken(data.token);
         console.log(`Local token is ${data.token}`);
+        setValue(data.token);
       })
       .catch((error) => {
         console.error('Error:', error);

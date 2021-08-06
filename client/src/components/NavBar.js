@@ -7,10 +7,10 @@ const NavBar = () => {
       <Link to='/' className='mainNav-link'>
         HomePage
       </Link>
-      <Link to='/newAuction' className='mainNav-link'>
+      <Link to='/newauction' className='mainNav-link'>
         Create New Auction
       </Link>
-      <Link to='Login' className='mainNav-link'>
+      <Link to='/login' className='mainNav-link'>
         Login
       </Link>
     </nav>
