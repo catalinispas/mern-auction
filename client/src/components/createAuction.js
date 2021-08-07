@@ -13,7 +13,7 @@ const CreateAuction = () => {
 
     console.log(value);
 
-    fetch('http://localhost:5000/api/items', {
+    fetch('/api/items', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ const CreateAuction = () => {
           onChange={(e) => setDuration(e.target.value)}
         />
         <br />
-        <button classname='button' type='button' onClick={submitAuction}>
+        <button className='button' type='button' onClick={submitAuction}>
           Submit Auction
         </button>
       </form>

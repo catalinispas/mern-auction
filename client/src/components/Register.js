@@ -17,7 +17,7 @@ const Register = () => {
   const registerUser = () => {
     alert('registered!');
 
-    fetch('http://localhost:5000/api/users', {
+    fetch('/api/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const Register = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <br />
-      <button classname='button' type='button' onClick={registerUser}>
+      <button className='button' type='button' onClick={registerUser}>
         Submit Auction
       </button>
     </div>

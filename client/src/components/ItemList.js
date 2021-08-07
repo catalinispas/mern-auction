@@ -8,7 +8,7 @@ const ItemList = () => {
 
   const [items, setItems] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/api/items')
+    fetch('/api/items')
       .then((res) => res.json())
       .then(
         (result) => {

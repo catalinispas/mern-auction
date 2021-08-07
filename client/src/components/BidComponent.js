@@ -10,7 +10,7 @@ const BidComponent = (props) => {
   console.log(value);
 
   const placeBid = () => {
-    fetch(`http://localhost:5000/api/items/${props.itemId}/bid`, {
+    fetch(`/api/items/${props.itemId}/bid`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
