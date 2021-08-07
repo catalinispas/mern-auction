@@ -9,7 +9,7 @@ const CreateAuction = () => {
   const { value, setValue } = useContext(AuthContext);
 
   const submitAuction = () => {
-    const newItem = { title, description };
+    const newItem = { title, description, duration };
 
     console.log(value);
 
@@ -48,13 +48,13 @@ const CreateAuction = () => {
           onChange={(e) => setDescription(e.target.value)}
         />
         <br />
-        <label>Time in minutes</label>
+        <label>Duration in minutes</label>
         <input
-          type='text'
+          type='number'
           value={duration}
           onChange={(e) => setDuration(e.target.value)}
         />
-        <label>30 minutes</label>
+        <br />
         <button type='button' onClick={submitAuction}>
           Submit Auction
         </button>

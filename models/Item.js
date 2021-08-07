@@ -18,7 +18,6 @@ const ItemSchema = new Schema({
   endDate: {
     type: Date,
     default: new Date(Date.now() + 10 * 60000),
-    required: true,
   },
   author: {
     type: String,

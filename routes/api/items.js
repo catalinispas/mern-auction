@@ -20,10 +20,15 @@ router.get('/', (req, res) => {
 // @desc    Create a Item
 // @access  Public
 router.post('/', auth, (req, res) => {
+  var newDate = new Date();
+  newDate.setMinutes(newDate.getMinutes() + req.body.duration);
+  console.log(Date.now(), newDate);
+
   const newItem = new Item({
     title: req.body.title,
     description: req.body.description,
     author: req.user.id,
+    endDate: newDate,
   });
   console.log(
     `Adding new item with $title: ${req.body.title} and $description: ${req.body.description}`
