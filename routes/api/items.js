@@ -20,9 +20,8 @@ router.get('/', (req, res) => {
 // @desc    Create a Item
 // @access  Public
 router.post('/', auth, (req, res) => {
-  var newDate = new Date();
-  newDate.setMinutes(newDate.getMinutes() + req.body.duration);
-  console.log(Date.now(), newDate);
+  var newDate = new Date(Date.now() + req.body.duration * 60000);
+  console.log(new Date(Date.now()), newDate);
 
   const newItem = new Item({
     title: req.body.title,

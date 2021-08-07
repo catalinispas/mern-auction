@@ -34,28 +34,31 @@ const CreateAuction = () => {
     // check to see if the user is already logged in and return the token if he is
     value && value != '' && value != undefined ? (
       <form>
-        <label>Title</label>
+        <label className='label'>Title</label>
+        <br />
         <input
           type='text'
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <br />
-        <label>Description</label>
+        <label className='label'>Description</label>
+        <br />
         <input
           type='text'
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
         <br />
-        <label>Duration in minutes</label>
+        <label className='label'>Duration in minutes</label>
+        <br />
         <input
           type='number'
           value={duration}
           onChange={(e) => setDuration(e.target.value)}
         />
         <br />
-        <button type='button' onClick={submitAuction}>
+        <button classname='button' type='button' onClick={submitAuction}>
           Submit Auction
         </button>
       </form>

@@ -57,3 +57,12 @@
   color: darkslategray;
   font-size: smaller;
 }
+
+.label {
+  font-size: smaller;
+  margin-bottom: 0;
+}
+
+.button {
+  margin-top: 0.5rem;
+}

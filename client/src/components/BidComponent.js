@@ -30,14 +30,16 @@ const BidComponent = (props) => {
   return value && value != '' && value != undefined ? (
     <div>
       <h2>Place a bid</h2>
-      <label>Amount</label>
+      <label className='label'>Amount</label>
+      <br />
       <input
+        className='input'
         type='number'
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
       />
-      <button type='button' onClick={placeBid}>
-        Submit Auction
+      <button className='button' type='button' onClick={placeBid}>
+        Submit bid!
       </button>
     </div>
   ) : (

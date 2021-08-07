@@ -39,7 +39,11 @@ const Item = ({ match }) => {
         <div className='title-wrapper'>
           <h4>{item.title}</h4>
           <p>{item.description}</p>
-          <p>{item.endDate}</p>
+          <p>
+            {new Date(item.endDate).toLocaleString('en-US', {
+              timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            })}
+          </p>{' '}
         </div>
         <ul className='itemList'>
           <li className='itemList-item'>
@@ -50,7 +54,11 @@ const Item = ({ match }) => {
           {bids.map((bid) => (
             <li className='itemList-item' key={bid._id}>
               <p>{bid.name}</p>
-              <p className='itemList-item-date'>{bid.date}</p>
+              <p className='itemList-item-date'>
+                {new Date(bid.date).toLocaleString('en-US', {
+                  timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                })}
+              </p>
               <p>{bid.amount}$</p>
             </li>
           ))}

@@ -18,6 +18,8 @@ import NavBar from './components/NavBar';
 import Item from './components/Item';
 import CreateAuction from './components/CreateAuction';
 import Login from './components/Login';
+import Register from './components/Register';
+
 import { AuthContext } from './components/AuthContext';
 
 // Main app
@@ -34,6 +36,7 @@ function App() {
               <Route path='/bids/:itemId' component={Item}></Route>
               <Route path='/newauction' component={CreateAuction}></Route>
               <Route path='/login' component={Login}></Route>
+              <Route path='/register' component={Register}></Route>
             </Switch>
           </Container>
         </Router>
